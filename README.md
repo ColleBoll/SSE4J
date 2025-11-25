@@ -11,7 +11,7 @@
 > **Note:** SSE4J-Spotify currently only works on **Windows**.
 
 SSE4J-Spotify is a Java app for displaying Spotify details on SteelSeries OLED screens.  
-You can download the `.jar` from the [releases](#).
+You can download the `.jar` from the [releases](https://github.com/ColleBoll/SSE4J/releases).
 
 ### Usage
 
