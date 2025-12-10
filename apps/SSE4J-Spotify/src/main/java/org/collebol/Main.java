@@ -18,6 +18,7 @@ public class Main {
 
         Main main = new Main();
         game.createConnection();
+        game.setShowConsoleDetails(true);
         game.getConnection().registerGame();
         main.buildSpotifyDetails();
         main.sendSpotifyDetails();
@@ -57,6 +58,7 @@ public class Main {
         while (true) {
             String spotify = SpotifyInfo.getSpotifyNow();
             if (spotify != null) {
+                if (pos >= spotify.length()) pos = 0;
                 String song = rotate16(spotify, pos);
                 game.getConnection().sendEvent("SHOW_SONG",
                         new JSONObject()
@@ -76,7 +78,7 @@ public class Main {
     public String rotate16(String text, int position) {
         final int WIDTH = 16;
 
-        String padded = text + "      ";
+        String padded = text + "                  ";
 
         StringBuilder frame = new StringBuilder();
 

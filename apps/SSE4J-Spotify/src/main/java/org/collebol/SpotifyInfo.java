@@ -3,6 +3,7 @@ package org.collebol;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Objects;
 
 public class SpotifyInfo {
@@ -12,11 +13,11 @@ public class SpotifyInfo {
                     "powershell \"Get-Process -Name Spotify | ForEach-Object { $_.MainWindowTitle }\""
             );
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String title = reader.readLine();
-            if (Objects.equals(title, "Spotify Premium")) {
-                title = null;
+            List<String> title = reader.readAllLines();
+            if (title.contains("Spotify Premium")) {
+                return null;
             }
-            return title;
+            return title.get(1);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
